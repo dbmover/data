@@ -11,8 +11,13 @@ use Dbmover\Core;
 
 class Plugin extends Core\Plugin
 {
+    /** @var string */
     public $description = 'Handling default data...';
 
+    /**
+     * @param string $sql
+     * @return string
+     */
     public function __invoke(string $sql) : string
     {
         if (preg_match_all("@^(INSERT INTO|UPDATE|DELETE FROM).*?;$@ms", $sql, $matches, PREG_SET_ORDER)) {
